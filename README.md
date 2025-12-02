@@ -4,6 +4,7 @@ Modernised end-to-end toolkit for collecting DNS traffic, extracting features,
 training ML models and classifying tunneled queries.
 
 ## 🔎 Highlights
+- `gui.py` provides a desktop GUI application for easy interaction with all features.
 - `capture.py` replaces the legacy `dns_logger.py`, saving rich DNS metadata to `dns_log.csv`.
 - Shared feature engineering lives in `features/dns_features.py` and is imported by every script.
 - `predict.py` scores captured traffic with the persisted `best_dns_model.pkl` and writes `dns_predictions.csv`.
@@ -12,6 +13,7 @@ training ML models and classifying tunneled queries.
 
 ```
 repo
+├── gui.py               # desktop GUI application (Tkinter)
 ├── capture.py           # live packet capture → dns_log.csv
 ├── predict.py           # offline inference
 ├── train_best.py        # train RF/XGB/LR and persist the winner
@@ -42,6 +44,17 @@ Npcap/WinPcap (Windows) or libpcap (Linux/macOS) plus Administrator/root
 privileges are required for packet capture.
 
 ## 🚀 Usage
+
+### Desktop GUI Application
+```bash
+python gui.py
+```
+Launch the Tkinter-based desktop GUI with:
+- **Start Capture** button to begin DNS packet capture
+- **Stop Capture** button (appears after starting capture)
+- **Analyse** button to run predictions on captured data
+
+The GUI provides a clean, user-friendly interface for all operations. Requires administrator privileges for capture functionality.
 
 ### Capture live DNS
 ```bash
